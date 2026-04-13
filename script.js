@@ -244,21 +244,21 @@ document.addEventListener('DOMContentLoaded', function () {
    MOBILE SEARCH (if separate element exists)
    ===================================================== */
 
-const mobileSearchInput = document.querySelector('.mobile-search input');
-if (mobileSearchInput) {
-    mobileSearchInput.addEventListener('input', (e) => {
-        const query = e.target.value.trim();
+// const mobileSearchInput = document.querySelector('.mobile-search input');
+// if (mobileSearchInput) {
+//     mobileSearchInput.addEventListener('input', (e) => {
+//         const query = e.target.value.trim();
 
-        if (typeof renderArticles === 'function') {
-            renderArticles(query);
-        }
+//         if (typeof renderArticles === 'function') {
+//             renderArticles(query);
+//         }
 
-        // Switch to publications page
-        if (query && typeof switchPage === 'function') {
-            switchPage('publications');
-        }
-    });
-}
+//         // Switch to publications page
+//         if (query && typeof switchPage === 'function') {
+//             switchPage('publications');
+//         }
+//     });
+// }
 
 /* ==================== BACK TO TOP ==================== */
 const backToTop = $('#back-to-top');
