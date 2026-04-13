@@ -130,7 +130,7 @@ startAuto();
    SEARCH FUNCTIONALITY - FIXED & SEO OPTIMIZED
    ===================================================== */
 
-const searchInputs = $$('#header-search, #journal-search');
+const searchInput = document.getElementById('journal-search');
 const searchDropdown = document.getElementById('search-dropdown');
 
 // Highlight matching text in search results
@@ -139,31 +139,6 @@ const highlightMatch = (text, query) => {
     const regex = new RegExp(`(${query.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')})`, 'gi');
     return text.replace(regex, '<mark>$1</mark>');
 };
-
-/* ==================== SEARCH OVERLAY LOGIC ==================== */
-const searchOverlay = $('#search-overlay');
-const searchClose = $('#search-close');
-const searchOpenBtns = $$('.search-icon-ui, .mobile-search i');
-
-const openSearchOverlay = () => {
-    searchOverlay?.classList.add('active');
-    document.body.classList.add('no-scroll');
-    const input = $('#full-search-input');
-    if (input) setTimeout(() => input.focus(), 300);
-};
-
-const closeSearchOverlay = () => {
-    searchOverlay?.classList.remove('active');
-    document.body.classList.remove('no-scroll');
-};
-
-searchOpenBtns.forEach(btn => btn.addEventListener('click', openSearchOverlay));
-searchClose?.addEventListener('click', closeSearchOverlay);
-
-// Close on ESC
-document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') closeSearchOverlay();
-});
 
 // Enhanced search matching with better SEO
 const searchArticles = (query) => {
@@ -207,94 +182,12 @@ const searchArticles = (query) => {
     }).slice(0, 8); // Limit to top 8 results
 };
 
-// Initialize search functionality for all matching inputs
-searchInputs.forEach(searchInput => {
-    // Clear initial value
-    searchInput.value = '';
-
-    // Input event listener
-    searchInput.addEventListener('input', (e) => {
-        const query = e.target.value.trim();
-
-        // Sync other search inputs if they exist (optional, but good for UX)
-        searchInputs.forEach(input => {
-            if (input !== searchInput) input.value = query;
-        });
-
-        // Reset locked article
-        if (typeof lockedArticleId !== 'undefined') {
-            lockedArticleId = null;
-        }
-
-        // Update publications page if visible
-        if (typeof pages !== 'undefined' && pages.publications && pages.publications.style.display !== 'none') {
-            if (typeof renderArticles === 'function') {
-                renderArticles(query);
-            }
-        }
-
-        // Internal filtering for publications.html
-        const publicationCards = $$('.publication-card');
-        if (publicationCards.length > 0) {
-            let visibleCount = 0;
-            publicationCards.forEach(card => {
-                const title = card.querySelector('h3')?.textContent.toLowerCase() || '';
-                const desc = card.querySelector('p')?.textContent.toLowerCase() || '';
-                const match = title.includes(query.toLowerCase()) || desc.includes(query.toLowerCase());
-                card.classList.toggle('hidden', !match);
-                if (match) visibleCount++;
-            });
-            const noResults = $('#no-results');
-            if (noResults) noResults.style.display = visibleCount === 0 ? 'block' : 'none';
-        }
-
-        // Show search suggestions
-        const matches = searchArticles(query);
-        showDropdown(matches, query, searchInput);
-    });
-
-    // Focus event - show recent searches or placeholder
-    searchInput.addEventListener('focus', () => {
-        const query = searchInput.value.trim();
-        if (query) {
-            const matches = searchArticles(query);
-            showDropdown(matches, query, searchInput);
-        }
-    });
-
-    // Keyboard navigation
-    let highlightedIndex = -1;
-
-    searchInput.addEventListener('keydown', (e) => {
-        const items = searchDropdown.querySelectorAll('.dropdown-item');
-
-        if (e.key === 'ArrowDown') {
-            e.preventDefault();
-            highlightedIndex = Math.min(highlightedIndex + 1, items.length - 1);
-            updateHighlight(items, highlightedIndex);
-        } else if (e.key === 'ArrowUp') {
-            e.preventDefault();
-            highlightedIndex = Math.max(highlightedIndex - 1, -1);
-            updateHighlight(items, highlightedIndex);
-        } else if (e.key === 'Enter') {
-            e.preventDefault();
-            if (highlightedIndex >= 0 && items[highlightedIndex]) {
-                items[highlightedIndex].click();
-            } else {
-                // If on publications page and enter is pressed without selection, just keep filter
-                searchDropdown.classList.remove('visible');
-            }
-        } else if (e.key === 'Escape') {
-            searchDropdown.classList.remove('visible');
-            searchInput.blur();
-            highlightedIndex = -1;
-        }
-    });
-});
-
-// Refactored showDropdown to position correctly relative to trigger
-const showDropdown = (matches, query, triggerEl) => {
-    if (!searchDropdown) return;
+// Show dropdown with search results
+const showDropdown = (matches, query) => {
+    if (!searchDropdown) {
+        console.warn('Search dropdown element not found');
+        return;
+    }
 
     // Clear previous results
     searchDropdown.innerHTML = '';
@@ -303,14 +196,6 @@ const showDropdown = (matches, query, triggerEl) => {
     if (!query || query.trim() === '') {
         searchDropdown.classList.remove('visible');
         return;
-    }
-
-    // Position dropdown under the active input if it's the header search
-    if (triggerEl.id === 'header-search') {
-        const rect = triggerEl.getBoundingClientRect();
-        searchDropdown.style.left = `${rect.left}px`;
-        searchDropdown.style.width = `${rect.width}px`;
-        // In consolidated CSS, we use relative positioning in the wrapper, so no need for absolute positioning here
     }
 
     // If no matches found
@@ -342,18 +227,39 @@ const showDropdown = (matches, query, triggerEl) => {
         item.addEventListener('click', (e) => {
             e.preventDefault();
             const selectedId = parseInt(item.dataset.id);
-            // articlesData is assumed global from journals-data.js or elsewhere
-            const selectedArticle = (typeof articlesData !== 'undefined' ? articlesData : JOURNALS_DATA).find(a => a.id === selectedId || a.id === item.dataset.id);
+            const selectedArticle = articlesData.find(a => a.id === selectedId);
 
             if (selectedArticle) {
-                // Update all search inputs
-                searchInputs.forEach(input => input.value = selectedArticle.title);
+                // Update search input
+                searchInput.value = selectedArticle.title;
 
                 // Hide dropdown
                 searchDropdown.classList.remove('visible');
 
-                // Redirect to journal page with ID
-                window.location.href = `journal.html?id=${selectedArticle.id}`;
+                // Reset locked article
+                if (typeof lockedArticleId !== 'undefined') {
+                    lockedArticleId = null;
+                }
+
+                // Switch to publications page if needed
+                if (typeof pages !== 'undefined' && pages.home && pages.home.style.display !== 'none') {
+                    if (typeof switchPage === 'function') {
+                        switchPage('publications');
+                    }
+                }
+
+                // Render filtered articles
+                if (typeof renderArticles === 'function') {
+                    renderArticles(selectedArticle.title);
+                }
+
+                // Update access button if function exists
+                if (typeof updateAccessButton === 'function') {
+                    updateAccessButton(selectedArticle);
+                }
+
+                // Scroll to top of publications
+                window.scrollTo({ top: 0, behavior: 'smooth' });
             }
         });
     });
@@ -362,32 +268,95 @@ const showDropdown = (matches, query, triggerEl) => {
     searchDropdown.classList.add('visible');
 };
 
-// Update highlighted item
-const updateHighlight = (items, index) => {
-    items.forEach((item, i) => {
-        if (i === index) {
-            item.classList.add('highlighted');
-            item.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
-        } else {
-            item.classList.remove('highlighted');
+// Initialize search functionality
+if (searchInput && searchDropdown) {
+    // Clear initial value
+    searchInput.value = '';
+
+    // Input event listener
+    searchInput.addEventListener('input', (e) => {
+        const query = e.target.value.trim();
+
+        // Reset locked article
+        if (typeof lockedArticleId !== 'undefined') {
+            lockedArticleId = null;
+        }
+
+        // Update publications page if visible
+        if (typeof pages !== 'undefined' && pages.publications && pages.publications.style.display !== 'none') {
+            if (typeof renderArticles === 'function') {
+                renderArticles(query);
+            }
+        }
+
+        // Show search suggestions
+        const matches = searchArticles(query);
+        showDropdown(matches, query);
+    });
+
+    // Focus event - show recent searches or placeholder
+    searchInput.addEventListener('focus', () => {
+        const query = searchInput.value.trim();
+        if (query) {
+            const matches = searchArticles(query);
+            showDropdown(matches, query);
         }
     });
-};
 
-// Click outside to close
-document.addEventListener('click', (e) => {
-    if (!e.target.closest('.search-autocomplete-wrapper')) {
-        searchDropdown.classList.remove('visible');
-        highlightedIndex = -1;
-    }
-});
+    // Keyboard navigation
+    let highlightedIndex = -1;
 
-// Prevent dropdown from closing when clicking inside
-searchDropdown.addEventListener('click', (e) => {
-    e.stopPropagation();
-});
+    searchInput.addEventListener('keydown', (e) => {
+        const items = searchDropdown.querySelectorAll('.dropdown-item');
 
+        if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            highlightedIndex = Math.min(highlightedIndex + 1, items.length - 1);
+            updateHighlight(items, highlightedIndex);
+        } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            highlightedIndex = Math.max(highlightedIndex - 1, -1);
+            updateHighlight(items, highlightedIndex);
+        } else if (e.key === 'Enter') {
+            e.preventDefault();
+            if (highlightedIndex >= 0 && items[highlightedIndex]) {
+                items[highlightedIndex].click();
+            }
+        } else if (e.key === 'Escape') {
+            searchDropdown.classList.remove('visible');
+            searchInput.blur();
+            highlightedIndex = -1;
+        }
+    });
 
+    // Update highlighted item
+    const updateHighlight = (items, index) => {
+        items.forEach((item, i) => {
+            if (i === index) {
+                item.classList.add('highlighted');
+                item.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+            } else {
+                item.classList.remove('highlighted');
+            }
+        });
+    };
+
+    // Click outside to close
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.search-autocomplete-wrapper')) {
+            searchDropdown.classList.remove('visible');
+            highlightedIndex = -1;
+        }
+    });
+
+    // Prevent dropdown from closing when clicking inside
+    searchDropdown.addEventListener('click', (e) => {
+        e.stopPropagation();
+    });
+
+} else {
+    console.error('Search elements not found. Check your HTML IDs.');
+}
 
 /* =====================================================
    MOBILE SEARCH (if separate element exists)

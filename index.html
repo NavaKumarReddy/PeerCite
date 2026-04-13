@@ -111,53 +111,63 @@
         <div class="container">
             <a href="index.html" class="header-logo">
                 <img src="assets/images/Peercite Logo..png" alt="PeerCite Logo" class="logo-img">
+                <div class="logo-text-wrapper">
+                </div>
             </a>
+
             <nav class="desktop-nav">
                 <div class="nav-dropdown">
-                    <a href="index.html" class="nav-link active"><span>Home</span><i class='bx bx-chevron-down'></i></a>
+                    <a href="index.html" class="nav-link active">
+                        <span>Home</span>
+                        <i class='bx bx-chevron-down'></i>
+                    </a>
                 </div>
+
                 <div class="nav-dropdown mega-dropdown">
-                    <a href="publications.html" class="nav-link"><span>Publications</span><span
-                            class="nav-badge">24+</span><i class='bx bx-chevron-down'></i></a>
+                    <a href="publications.html" class="nav-link">
+                        <span>Publications</span>
+                        <!-- <span class="nav-badge"></span> -->
+                        <i class='bx bx-chevron-down'></i>
+                    </a>
                     <div class="dropdown-menu mega-menu">
                         <div class="mega-menu-inner">
-                            <div class="mega-col">
+                            <div class="mega-col" data-category="medical">
                                 <h5 class="mega-title"><i class='bx bx-heart-circle'></i> Medical Sciences</h5>
                                 <ul class="mega-links">
-                                    <li><a href="journal.html?id=mental-health">Mental Health</a></li>
-                                    <li><a href="journal.html?id=surgery-medicine">Surgery & Medicine</a></li>
-                                    <li><a href="journal.html?id=neuroscience">Neuroscience</a></li>
-                                    <li><a href="journal.html?id=cardio-biology">Cardio Biology</a></li>
+                                    <li><a href="journal.html">Mental Health Research</a></li>
+                                    <li><a href="journal.html">Neuroscience Advances</a></li>
+                                    <li><a href="journal.html">Clinical Medicine Today</a></li>
+                                    <li><a href="journal.html">Surgery & Innovation</a></li>
                                 </ul>
                             </div>
-                            <div class="mega-col">
+                            <div class="mega-col" data-category="technology">
                                 <h5 class="mega-title"><i class='bx bx-chip'></i> Technology</h5>
                                 <ul class="mega-links">
-                                    <li><a href="journal.html?id=ai-machine-learning">AI & Machine Learning</a></li>
-                                    <li><a href="journal.html?id=quantum-science">Quantum Science</a></li>
-                                    <li><a href="journal.html?id=blockchain">Blockchain</a></li>
-                                    <li><a href="journal.html?id=applied-chemistry">Applied Chemistry</a></li>
+                                    <li><a href="journal.html">AI & Machine Learning</a></li>
+                                    <li><a href="journal.html">Cybersecurity Review</a></li>
+                                    <li><a href="journal.html">Data Science Quarterly</a></li>
+                                    <li><a href="journal.html">Robotics & Automation</a></li>
                                 </ul>
                             </div>
-                            <div class="mega-col">
+                            <div class="mega-col" data-category="environmental">
                                 <h5 class="mega-title"><i class='bx bx-leaf'></i> Environmental Sciences</h5>
                                 <ul class="mega-links">
-                                    <li><a href="journal.html?id=environmental-sciences">Climate Studies</a></li>
-                                    <li><a href="journal.html?id=environmental-sciences">Sustainability</a></li>
-                                    <li><a href="journal.html?id=environmental-sciences">Marine Biology</a></li>
-                                    <li><a href="journal.html?id=environmental-sciences">Ecology</a></li>
+                                    <li><a href="journal.html">Climate Studies</a></li>
+                                    <li><a href="journal.html">Sustainability Research</a></li>
+                                    <li><a href="journal.html">Marine Biology</a></li>
+                                    <li><a href="journal.html">Ecology & Conservation</a></li>
                                 </ul>
                             </div>
                             <div class="mega-col mega-featured">
                                 <div class="mega-featured-card">
-                                    <span class="featured-badge">Featured</span>
-                                    <h4>Women's Leadership 2024</h4>
-                                    <p>Latest proceedings from the WL Conference.</p>
+                                    <span class="featured-badge">Latest Issue</span>
+                                    <h4>AI in Healthcare 2024</h4>
+                                    <p>Conference proceedings from the Global Health Tech Summit.</p>
                                     <div class="featured-stats">
-                                        <div class="stat"><strong>4</strong><span>Proceedings</span></div>
-                                        <div class="stat"><strong>24</strong><span>Journals</span></div>
+                                        <div class="stat"><strong>45</strong><span>Articles</span></div>
+                                        <div class="stat"><strong>12K</strong><span>Reads</span></div>
                                     </div>
-                                    <a href="journal.html?id=womens-leadership" class="mega-featured-btn">Read Now →</a>
+                                    <a href="journal.html" class="mega-featured-btn">Read Now →</a>
                                 </div>
                             </div>
                         </div>
@@ -167,53 +177,94 @@
                         </div>
                     </div>
                 </div>
+
                 <div class="nav-dropdown">
-                    <a href="authors.html" class="nav-link"><span>Authors Hub</span><i
-                            class='bx bx-chevron-down'></i></a>
+                    <a href="authors.html" class="nav-link">
+                        <span>Authors Hub</span>
+                        <i class='bx bx-chevron-down'></i>
+                    </a>
                 </div>
+
                 <div class="nav-dropdown">
-                    <a href="about.html" class="nav-link"><span>About</span><i class='bx bx-chevron-down'></i></a>
+                    <a href="about.html" class="nav-link">
+                        <span>About</span>
+                        <i class='bx bx-chevron-down'></i>
+                    </a>
                     <div class="dropdown-menu">
                         <a href="about.html" class="dropdown-item">
                             <div class="dropdown-icon"><i class='bx bx-building-house'></i></div>
-                            <div class="dropdown-content"><span class="dropdown-title">Our Story</span><span
-                                    class="dropdown-desc">Mission & vision</span></div>
+                            <div class="dropdown-content">
+                                <span class="dropdown-title">Our Story</span>
+                                <span class="dropdown-desc">Mission & vision</span>
+                            </div>
                         </a>
                         <a href="about.html#team" class="dropdown-item">
                             <div class="dropdown-icon"><i class='bx bx-group'></i></div>
-                            <div class="dropdown-content"><span class="dropdown-title">Editorial Board</span><span
-                                    class="dropdown-desc">Meet our experts</span></div>
+                            <div class="dropdown-content">
+                                <span class="dropdown-title">Editorial Board</span>
+                                <span class="dropdown-desc">Meet our experts</span>
+                            </div>
+                        </a>
+                        <a href="about.html#partners" class="dropdown-item">
+                            <div class="dropdown-icon"><i class='bx bx-handshake'></i></div>
+                            <div class="dropdown-content">
+                                <span class="dropdown-title">Partners</span>
+                                <span class="dropdown-desc">Conference organizers</span>
+                            </div>
                         </a>
                     </div>
                 </div>
+
                 <div class="nav-dropdown">
-                    <a href="contact.html" class="nav-link"><span>Contact</span><i class='bx bx-chevron-down'></i></a>
+                    <a href="contact.html" class="nav-link">
+                        <span>Contact</span>
+                        <i class='bx bx-chevron-down'></i>
+                    </a>
+                    <div class="dropdown-menu">
+                        <a href="contact.html" class="dropdown-item">
+                            <div class="dropdown-icon"><i class='bx bx-envelope'></i></div>
+                            <div class="dropdown-content">
+                                <span class="dropdown-title">Get In Touch</span>
+                                <span class="dropdown-desc">Send us a message</span>
+                            </div>
+                        </a>
+                        <a href="contact.html#faq" class="dropdown-item">
+                            <div class="dropdown-icon"><i class='bx bx-help-circle'></i></div>
+                            <div class="dropdown-content">
+                                <span class="dropdown-title">FAQs</span>
+                                <span class="dropdown-desc">Common questions</span>
+                            </div>
+                        </a>
+                        <a href="contact.html#partner" class="dropdown-item">
+                            <div class="dropdown-icon"><i class='bx bx-link'></i></div>
+                            <div class="dropdown-content">
+                                <span class="dropdown-title">Partner With Us</span>
+                                <span class="dropdown-desc">For conference organizers</span>
+                            </div>
+                        </a>
+                    </div>
                 </div>
             </nav>
-            <div class="search-autocomplete-wrapper">
+
+            <!-- NEW INTEGRATED SEARCH BAR (goes in the header) -->
+            <!-- <div class="search-autocomplete-wrapper">
                 <div class="integrated-access-bar">
                     <div class="search-section">
                         <i class='bx bx-search search-icon-ui'></i>
-                        <input type="text" id="header-search" placeholder="Search journals" autocomplete="off">
+                        <input type="text" id="journal-search" placeholder="Search journals" autocomplete="off">
                         <div id="search-dropdown" class="search-dropdown"></div>
+
                     </div>
-                </div>
-            </div>
-            <button class="hamburger" id="hamburger">
-                <span class="hamburger-line"></span><span class="hamburger-line"></span><span
-                    class="hamburger-line"></span>
-            </button>
-        </div>
+                </div> -->
+            <!-- Dropdown MUST be inside wrapper -->
+            <!-- </div> -->
     </header>
 
     <!-- MOBILE MENU -->
-    <!-- MOBILE MENU -->
-    <!-- <div class="mobile-overlay" id="mobile-overlay"></div>
+    <div class="mobile-overlay" id="mobile-overlay"></div>
     <div class="mobile-menu" id="mobile-menu">
         <div class="mobile-menu-header">
-            <a href="index.html" class="mobile-logo">
-                <img src="assets/images/Peercite Logo..png" alt="PeerCite Logo" style="height: 40px; width: auto;">
-            </a>
+            <div class="mobile-logo"><span class="logo-mark">P</span><span>PeerCite</span></div>
             <button class="mobile-close" id="mobile-close"><i class='bx bx-x'></i></button>
         </div>
         <div class="mobile-search">
@@ -239,9 +290,9 @@
                     <i class='bx bx-chevron-down chevron'></i>
                 </button>
                 <div class="mobile-dropdown-content">
-                    <a href="publications.html?filter=medical">Medical Sciences</a>
-                    <a href="publications.html?filter=science-tech">Technology</a>
-                    <a href="publications.html?filter=environmental">Environmental Sciences</a>
+                    <a href="journal.html">Medical Sciences</a>
+                    <a href="journal.html">Technology</a>
+                    <a href="journal.html">Environmental Sciences</a>
                     <a href="publications.html" class="view-all">View All →</a>
                 </div>
             </div>
@@ -295,10 +346,10 @@
                 <a href="#"><i class='bx bxl-instagram'></i></a>
             </div>
         </div>
-    </div> -->
+    </div>
 
     <!-- SEARCH OVERLAY -->
-    <div class="search-overlay" id="search-overlay">
+    <!-- <div class="search-overlay" id="search-overlay">
         <div class="search-overlay-inner">
             <button class="search-close" id="search-close"><i class='bx bx-x'></i></button>
             <h2>Search Articles & Journals</h2>
@@ -318,7 +369,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 
     <!-- ==================== HOME PAGE ==================== -->
     <div id="page-home">
@@ -419,28 +470,28 @@
                 </div>
 
                 <!-- Filter Pills -->
-                <div style="display:flex; flex-wrap:wrap; gap:0.75rem; justify-content:center; margin-bottom:2.5rem;">
-                    <button class="suggestion-tag"
-                        style="background:var(--primary); color:#fff; border:none; cursor:pointer; padding:0.5rem 1.25rem; border-radius:50px; font-size:0.875rem; font-weight:600;">
-                        All
-                    </button>
-                    <button class="suggestion-tag"
-                        style="border:none; cursor:pointer; padding:0.5rem 1.25rem; border-radius:50px; font-size:0.875rem; background:var(--white); color:var(--gray-700); font-weight:500; box-shadow:0 1px 4px rgba(0,0,0,0.08);">
-                        Medical Sciences
-                    </button>
-                    <button class="suggestion-tag"
-                        style="border:none; cursor:pointer; padding:0.5rem 1.25rem; border-radius:50px; font-size:0.875rem; background:var(--white); color:var(--gray-700); font-weight:500; box-shadow:0 1px 4px rgba(0,0,0,0.08);">
-                        Technology
-                    </button>
-                    <button class="suggestion-tag"
-                        style="border:none; cursor:pointer; padding:0.5rem 1.25rem; border-radius:50px; font-size:0.875rem; background:var(--white); color:var(--gray-700); font-weight:500; box-shadow:0 1px 4px rgba(0,0,0,0.08);">
-                        Environmental
-                    </button>
-                    <button class="suggestion-tag"
-                        style="border:none; cursor:pointer; padding:0.5rem 1.25rem; border-radius:50px; font-size:0.875rem; background:var(--white); color:var(--gray-700); font-weight:500; box-shadow:0 1px 4px rgba(0,0,0,0.08);">
-                        Engineering
-                    </button>
-                </div>
+                <!-- <div style="display:flex; flex-wrap:wrap; gap:0.75rem; justify-content:center; margin-bottom:2.5rem;">
+                <button class="suggestion-tag"
+                    style="background:var(--primary); color:#fff; border:none; cursor:pointer; padding:0.5rem 1.25rem; border-radius:50px; font-size:0.875rem; font-weight:600;">
+                    All
+                </button>
+                <button class="suggestion-tag"
+                    style="border:none; cursor:pointer; padding:0.5rem 1.25rem; border-radius:50px; font-size:0.875rem; background:var(--white); color:var(--gray-700); font-weight:500; box-shadow:0 1px 4px rgba(0,0,0,0.08);">
+                    Medical Sciences
+                </button>
+                <button class="suggestion-tag"
+                    style="border:none; cursor:pointer; padding:0.5rem 1.25rem; border-radius:50px; font-size:0.875rem; background:var(--white); color:var(--gray-700); font-weight:500; box-shadow:0 1px 4px rgba(0,0,0,0.08);">
+                    Technology
+                </button>
+                <button class="suggestion-tag"
+                    style="border:none; cursor:pointer; padding:0.5rem 1.25rem; border-radius:50px; font-size:0.875rem; background:var(--white); color:var(--gray-700); font-weight:500; box-shadow:0 1px 4px rgba(0,0,0,0.08);">
+                    Environmental
+                </button>
+                <button class="suggestion-tag"
+                    style="border:none; cursor:pointer; padding:0.5rem 1.25rem; border-radius:50px; font-size:0.875rem; background:var(--white); color:var(--gray-700); font-weight:500; box-shadow:0 1px 4px rgba(0,0,0,0.08);">
+                    Engineering
+                </button>
+            </div> -->
 
                 <!-- Trending Journal Cards Grid -->
                 <div class="journals-grid">
@@ -452,17 +503,18 @@
                                 alt="AI & Machine Learning Journal" loading="lazy">
                             <span class="journal-category">Technology</span>
                             <!-- Trending Badge -->
-                            <span class="badge-tag badge-trending">
+                            <span class="conf-badge bg-tech">
                                 <i class='bx bx-trending-up'></i> TRENDING
                             </span>
                         </div>
                         <div class="journal-content">
-                            <div class="journal-meta-top">
-                                <span class="journal-date">
+                            <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.5rem;">
+                                <span style="font-size:0.78rem; color:var(--gray-500);">
                                     <i class='bx bx-calendar-alt'></i> April 2026
                                 </span>
-                                <span class="meta-dot"></span>
-                                <span class="journal-issue">
+                                <span
+                                    style="width:4px; height:4px; border-radius:50%; background:var(--gray-300);"></span>
+                                <span style="font-size:0.78rem; color:var(--gray-500);">
                                     <i class='bx bx-time-five'></i> Volume 8, Issue 2
                                 </span>
                             </div>
@@ -484,17 +536,18 @@
                             <img src="https://images.unsplash.com/photo-1559757175-5700dde675bc?w=600&h=400&fit=crop"
                                 alt="Mental Health Research Journal" loading="lazy">
                             <span class="journal-category">Medical Sciences</span>
-                            <span class="badge-tag badge-new">
+                            <span class="conf-badge bg-medical">
                                 <i class='bx bx-star'></i> NEW ISSUE
                             </span>
                         </div>
                         <div class="journal-content">
-                            <div class="journal-meta-top">
-                                <span class="journal-date">
+                            <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.5rem;">
+                                <span style="font-size:0.78rem; color:var(--gray-500);">
                                     <i class='bx bx-calendar-alt'></i> March 2026
                                 </span>
-                                <span class="meta-dot"></span>
-                                <span class="journal-issue">
+                                <span
+                                    style="width:4px; height:4px; border-radius:50%; background:var(--gray-300);"></span>
+                                <span style="font-size:0.78rem; color:var(--gray-500);">
                                     <i class='bx bx-time-five'></i> Volume 5, Issue 1
                                 </span>
                             </div>
@@ -516,17 +569,18 @@
                             <img src="https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=600&h=400&fit=crop"
                                 alt="Climate & Environmental Studies Journal" loading="lazy">
                             <span class="journal-category">Environmental Sciences</span>
-                            <span class="badge-tag badge-hot">
+                            <span class="conf-badge bg-environmental">
                                 <i class='bx bx-trending-up'></i> HOT
                             </span>
                         </div>
                         <div class="journal-content">
-                            <div class="journal-meta-top">
-                                <span class="journal-date">
+                            <div style="display:flex; align-items:center; gap:0.5rem; margin-bottom:0.5rem;">
+                                <span style="font-size:0.78rem; color:var(--gray-500);">
                                     <i class='bx bx-calendar-alt'></i> April 2026
                                 </span>
-                                <span class="meta-dot"></span>
-                                <span class="journal-issue">
+                                <span
+                                    style="width:4px; height:4px; border-radius:50%; background:var(--gray-300);"></span>
+                                <span style="font-size:0.78rem; color:var(--gray-500);">
                                     <i class='bx bx-time-five'></i> Volume 11, Issue 3
                                 </span>
                             </div>
@@ -548,7 +602,8 @@
                             <img src="https://images.unsplash.com/photo-1507413245164-6160d8298b31?w=600&h=400&fit=crop"
                                 alt="Quantum Science Journal" loading="lazy">
                             <span class="journal-category">Physics & Engineering</span>
-                            <span class="badge-tag badge-top">
+                            <span class="conf-badge"
+                                style="position:absolute; top:0.75rem; left:0.75rem; background:linear-gradient(135deg,#ef4444,#dc2626); color:#fff; padding:0.3rem 0.8rem; border-radius:50px; font-size:0.72rem; font-weight:700; letter-spacing:0.05em; display:flex; align-items:center; gap:0.3rem;">
                                 <i class='bx bx-award'></i> TOP CITED
                             </span>
                         </div>
