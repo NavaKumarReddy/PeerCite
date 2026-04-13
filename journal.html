@@ -5,7 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Journal | PeerCite Publishers</title>
-    <meta name="description" content="Read full-text peer-reviewed journal articles and conference proceedings across various academic disciplines including Medical and Technology.">
+    <meta name="description"
+        content="Read full-text peer-reviewed journal articles and conference proceedings across various academic disciplines including Medical and Technology.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -140,7 +141,9 @@
     <div class="mobile-overlay" id="mobile-overlay"></div>
     <div class="mobile-menu" id="mobile-menu">
         <div class="mobile-menu-header">
-            <div class="mobile-logo"><span class="logo-mark">P</span><span>PeerCite</span></div>
+            <a href="index.html" class="mobile-logo">
+                <img src="assets/images/Peercite Logo..png" alt="PeerCite Logo" style="height: 40px; width: auto;">
+            </a>
             <button class="mobile-close" id="mobile-close"><i class='bx bx-x'></i></button>
         </div>
         <div class="mobile-search"><i class='bx bx-search'></i><input type="search" placeholder="Search journals...">
@@ -357,6 +360,27 @@
             </div>
         </div>
     </footer>
+
+    <!-- SEARCH OVERLAY -->
+    <div class="search-overlay" id="search-overlay">
+        <div class="search-overlay-inner">
+            <button class="search-close" id="search-close"><i class='bx bx-x'></i></button>
+            <h2>Search Articles & Journals</h2>
+            <div class="search-input-group">
+                <input type="text" id="full-search-input" placeholder="Type to search journals/proceedings...">
+                <i class='bx bx-search'></i>
+            </div>
+            <div class="search-trending">
+                <span>Trending Searches:</span>
+                <div class="trending-tags">
+                    <a href="journal.html?id=ai-machine-learning">AI & ML</a>
+                    <a href="journal.html?id=mental-health">Mental Health</a>
+                    <a href="journal.html?id=sustainability">Sustainability</a>
+                    <a href="journal.html?id=neuroscience">Neuroscience</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <button class="back-to-top" id="back-to-top"><i class='bx bx-up-arrow-alt'></i></button>
     <script src="script.js"></script>

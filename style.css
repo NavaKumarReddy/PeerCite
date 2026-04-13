@@ -850,14 +850,14 @@ ul {
     box-shadow: var(--shadow-md);
 } */
 
-/* .main-header .container {
+.main-header .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding-top: 0.4rem;
     padding-bottom: 0.4rem;
     background-origin: padding-box;
-} */
+}
 
 /* Desktop Nav */
 .desktop-nav {
@@ -1112,7 +1112,7 @@ ul {
 .hamburger-line {
     width: 24px;
     height: 2px;
-    background: var(--dark);
+    background: #111;
     transition: var(--transition);
 }
 
@@ -1129,6 +1129,106 @@ ul {
 }
 
 /* ==================== SEARCH OVERLAY ==================== */
+.search-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 10, 10, 0.98);
+    backdrop-filter: blur(15px);
+    z-index: 10000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.search-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.search-overlay-inner {
+    width: 90%;
+    max-width: 800px;
+    position: relative;
+    text-align: center;
+    color: white;
+}
+
+.search-close {
+    position: absolute;
+    top: -60px;
+    right: 0;
+    font-size: 2.5rem;
+    color: white;
+    background: transparent;
+    cursor: pointer;
+}
+
+.search-overlay-inner h2 {
+    color: white;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+}
+
+.search-input-group {
+    position: relative;
+    margin-bottom: 3rem;
+}
+
+.search-input-group input {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+    padding: 1rem 0;
+    font-size: 1.5rem;
+    color: white;
+    transition: border-color 0.3s ease;
+}
+
+.search-input-group input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+.search-input-group i {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.5rem;
+    color: var(--primary);
+}
+
+.search-trending span {
+    display: block;
+    margin-bottom: 1rem;
+    font-size: 0.9rem;
+    color: var(--gray-400);
+}
+
+.trending-tags {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.trending-tags a {
+    padding: 0.5rem 1.2rem;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: var(--radius-full);
+    font-size: 0.85rem;
+    transition: all 0.3s ease;
+}
+
+.trending-tags a:hover {
+    background: var(--primary);
+    color: white;
+}
+
 /* =====================================================
    ENHANCED SEARCH DROPDOWN STYLES
    ===================================================== */
@@ -1328,16 +1428,17 @@ ul {
 .mobile-menu {
     position: fixed;
     top: 0;
-    right: -100%;
-    width: 90%;
-    max-width: 400px;
+    right: -350px;
+    width: 85%;
+    max-width: 350px;
     height: 100vh;
     background: var(--white);
-    z-index: 500;
+    z-index: 2100;
     overflow-y: auto;
     transition: right 0.4s ease;
     display: flex;
     flex-direction: column;
+    box-shadow: -10px 0 30px rgba(0, 0, 0, 0.1);
 }
 
 .mobile-menu.active {
@@ -6000,12 +6101,12 @@ code {
 /* ==================== MOBILE MENU Z-INDEX ==================== */
 .mobile-overlay {
     position: fixed;
-    z-index: 400;
+    z-index: 2000;
 }
 
 .mobile-menu {
     position: fixed;
-    z-index: 500;
+    z-index: 2100;
 }
 
 /* ==================== PRELOADER Z-INDEX ==================== */
@@ -6882,20 +6983,6 @@ code {
         width: 100% !important;
     }
 
-    /* Container safety */
-    .container {
-        padding-left: 1rem !important;
-        padding-right: 1rem !important;
-        width: 100% !important;
-        max-width: 100% !important;
-    }
-
-    /* Remove all negative margins */
-    * {
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-    }
-
     /* Grid adjustments */
     .journals-grid,
     .publications-grid,
@@ -7079,20 +7166,9 @@ code {
 /* ==================== SAFETY NET - FORCE EVERYTHING ==================== */
 @media (max-width: 768px) {
 
-    /* Nuclear option - force everything within viewport */
-    * {
-        max-width: 100vw !important;
-    }
-
-    /* But allow properly contained children */
-    .container *,
-    section>.container>* {
-        max-width: 100% !important;
-    }
-
     /* Ensure no element creates horizontal scroll */
-    body>* {
-        max-width: 100vw !important;
+    body {
+        overflow-x: hidden;
     }
 }
 

@@ -140,6 +140,31 @@ const highlightMatch = (text, query) => {
     return text.replace(regex, '<mark>$1</mark>');
 };
 
+/* ==================== SEARCH OVERLAY LOGIC ==================== */
+const searchOverlay = $('#search-overlay');
+const searchClose = $('#search-close');
+const searchOpenBtns = $$('.search-icon-ui, .mobile-search i');
+
+const openSearchOverlay = () => {
+    searchOverlay?.classList.add('active');
+    document.body.classList.add('no-scroll');
+    const input = $('#full-search-input');
+    if (input) setTimeout(() => input.focus(), 300);
+};
+
+const closeSearchOverlay = () => {
+    searchOverlay?.classList.remove('active');
+    document.body.classList.remove('no-scroll');
+};
+
+searchOpenBtns.forEach(btn => btn.addEventListener('click', openSearchOverlay));
+searchClose?.addEventListener('click', closeSearchOverlay);
+
+// Close on ESC
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeSearchOverlay();
+});
+
 // Enhanced search matching with better SEO
 const searchArticles = (query) => {
     if (!query || !articlesData) return [];
